@@ -5,6 +5,7 @@ Icons used in this module were created by:
 
 VClouds Weather Icons�
 Created and copyrighted� by VClouds - http://vclouds.deviantart.com/
+
 The icons are free to use for Non-Commercial use and can be found at icons DA page - http://vclouds.deviantart.com/gallery/#/d2ynulp
 
 
@@ -81,11 +82,5 @@ iconTable: {
     '13n': 'wi-night-snow',
     '50n': 'wi-night-alt-cloudy-windy'
 }
-
-VClouds Weather Icons�
-Created and copyrighted� by VClouds - http://vclouds.deviantart.com/
-The icons are free to use for Non-Commercial use and can be found at icons DA page - http://vclouds.deviantart.com/gallery/#/d2ynulp
-
-
 ````
 
