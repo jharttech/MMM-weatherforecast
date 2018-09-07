@@ -1,4 +1,4 @@
-# Module: Weather Forecast
+# Module: MMM-weatherforecast
 This is a new version of the weather forecast module for MagicMirror.  This one does not come as a default module.  This version has been edited to allow the days of the week to span left to right, each with its own weather icon and details.
 Icons used in this module were created by:
 
