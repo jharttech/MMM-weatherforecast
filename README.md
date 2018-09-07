@@ -1,5 +1,13 @@
 # Module: Weather Forecast
 This is a new version of the weather forecast module for MagicMirror.  This one does not come as a default module.  This version has been edited to allow the days of the week to span left to right, each with its own weather icon and details.
+Icons used in this module were created by:
+
+
+VClouds Weather Icons�
+Created and copyrighted� by VClouds - http://vclouds.deviantart.com/
+The icons are free to use for Non-Commercial use and can be found at icons DA page - http://vclouds.deviantart.com/gallery/#/d2ynulp
+
+
 This module displays the weather forecast for the coming week, including an an icon to display the current conditions, the minimum temperature and the maximum temperature.
 
 ## Using the module
@@ -73,5 +81,11 @@ iconTable: {
     '13n': 'wi-night-snow',
     '50n': 'wi-night-alt-cloudy-windy'
 }
+
+VClouds Weather Icons�
+Created and copyrighted� by VClouds - http://vclouds.deviantart.com/
+The icons are free to use for Non-Commercial use and can be found at icons DA page - http://vclouds.deviantart.com/gallery/#/d2ynulp
+
+
 ````
 
