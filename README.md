@@ -1,5 +1,5 @@
 # Module: Weather Forecast
-The `weatherforecast` module is one of the default modules of the MagicMirror.
+This is a new version of the weather forecast module for MagicMirror.  This one does not come as a default module.  This version has been edited to allow the days of the week to span left to right, each with its own weather icon and details.
 This module displays the weather forecast for the coming week, including an an icon to display the current conditions, the minimum temperature and the maximum temperature.
 
 ## Using the module
@@ -10,7 +10,7 @@ modules: [
 	{
 		module: "weatherforecast",
 		position: "top_right",	// This can be any of the regions.
-									// Best results in left or right regions.
+					// Best results in left or right regions.
 		config: {
 			// See 'Configuration options' for more information.
 			location: "Amsterdam,Netherlands",
