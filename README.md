@@ -17,7 +17,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
 ````javascript
 modules: [
 	{
-		module: "weatherforecast",
+		module: "MMM-weatherforecast",
 		position: "top_right",	// This can be any of the regions.
 					// Best results in left or right regions.
 		config: {
