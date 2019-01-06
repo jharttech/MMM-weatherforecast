@@ -8,6 +8,8 @@ Created and copyrighted by VClouds - http://vclouds.deviantart.com/
 
 The icons are free to use for Non-Commercial use and can be found at icons DA page - http://vclouds.deviantart.com/gallery/#/d2ynulp
 
+Note:  You will need to move the "icon" folder, included in this project, to the 'MagicMirror/css/' directory if you want to use the included icons.  If you wish to use your own icons place them in the 'icon' folder in place of the desired icon. 
+
 
 This module displays the weather forecast for the coming week, including an an icon to display the current conditions, the minimum temperature and the maximum temperature.
 
