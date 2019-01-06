@@ -19,7 +19,7 @@ modules: [
 	{
 		module: "MMM-weatherforecast",
 		position: "top_right",	// This can be any of the regions.
-					// Best results in left or right regions.
+					// Best results in bottom_bar region due to horizontal default layout and icon sizes.
 		config: {
 			// See 'Configuration options' for more information.
 			location: "Amsterdam,Netherlands",
