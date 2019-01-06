@@ -1,9 +1,10 @@
 /* global Module */
 
 /* Magic Mirror
- * Module:MMM-weatherforecast
+ * Module: WeatherForecast
  *
- * By Jason Hartgraves
+ * By Michael Teeuw http://michaelteeuw.nl
+ * MIT Licensed.
  */
 
 Module.register("MMM-weatherforecast",{
@@ -15,6 +16,7 @@ Module.register("MMM-weatherforecast",{
 		appid: "",
 		units: config.units,
 		maxNumberOfDays: 7,
+		layout: "default",
 		showRainAmount: false,
 		updateInterval: 10 * 60 * 1000, // every 10 minutes
 		animationSpeed: 1000,
@@ -35,6 +37,7 @@ Module.register("MMM-weatherforecast",{
 
 		appendLocationNameToHeader: true,
 		calendarClass: "calendar",
+		tableClass: "small",
 
 		roundTemp: false,
 
@@ -73,7 +76,7 @@ Module.register("MMM-weatherforecast",{
 
 	// Define required scripts.
 	getStyles: function() {
-		return ["MMM-weather-icons.css", "MMM-weatherforecast.css"];
+		return ["weather-icons.css", "MMM-weatherforecast.css"];
 	},
 
 	// Define required translations.
@@ -116,87 +119,250 @@ Module.register("MMM-weatherforecast",{
 		}
 
 		var table = document.createElement("table");
-		table.className = "small";
+		table.className = this.config.tableClass;
 
-		for (var f in this.forecast) {
-			var forecast = this.forecast[f];
+		switch (this.config.layout){
+		case "horizontal":
+			for (var f in this.forecast) {
+				var forecast = this.forecast[f];
 
-			var row = document.createElement("td");
-			if (this.config.colored) {
-				row.className = "colored";
-			}
-			table.appendChild(row);
-
-			var dayCell = document.createElement("tr");
-			dayCell.className = "day";
-			dayCell.innerHTML = forecast.day;
-			row.appendChild(dayCell);
-
-			var iconCell = document.createElement("tr");
-			iconCell.className = "bright weather-icon";
-			row.appendChild(iconCell);
-
-			var icon = document.createElement("span");
-			icon.className = "wi weathericon " + forecast.icon;
-			iconCell.appendChild(icon);
-
-			var degreeLabel = "";
-			if(this.config.scale) {
-				switch(this.config.units) {
-				case "metric":
-					degreeLabel = " &deg;C";
-					break;
-				case "imperial":
-					degreeLabel = " &deg;F";
-					break;
-				case "default":
-					degreeLabel = "K";
-					break;
+				var row = document.createElement("td");
+				if (this.config.colored) {
+					row.className = "colored";
 				}
-			}
+				table.appendChild(row);
 
-			if (this.config.decimalSymbol === "" || this.config.decimalSymbol === " ") {
-				this.config.decimalSymbol = ".";
-			}
+				var dayCell = document.createElement("tr");
+				dayCell.className = "day";
+				dayCell.innerHTML = forecast.day;
+				row.appendChild(dayCell);
 
-			var maxTempCell = document.createElement("td");
-			maxTempCell.innerHTML = forecast.maxTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
-			maxTempCell.className = "bright max-temp";
-			row.appendChild(maxTempCell);
+				var iconCell = document.createElement("tr");
+				iconCell.className = "bright weather-icon";
+				row.appendChild(iconCell);
 
-			var minTempCell = document.createElement("tr");
-			minTempCell.innerHTML = forecast.minTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
-			minTempCell.className = "min-temp";
-			row.appendChild(minTempCell);
+				var icon = document.createElement("span");
+				icon.className = "wi weathericon " + forecast.icon;
+				iconCell.appendChild(icon);
 
-			if (this.config.showRainAmount) {
-				var rainCell = document.createElement("td");
-				if (isNaN(forecast.rain)) {
-					rainCell.innerHTML = "";
-				} else {
-					if(config.units !== "imperial") {
-						rainCell.innerHTML = forecast.rain + " mm";
-					} else {
-						rainCell.innerHTML = (parseFloat(forecast.rain) / 25.4).toFixed(2) + " in";
+				var degreeLabel = "&deg;";
+				if(this.config.scale) {
+					switch(this.config.units) {
+					case "metric":
+						degreeLabel += " C";
+						break;
+					case "imperial":
+						degreeLabel += " F";
+						break;
+					case "default":
+						degreeLabel = "K";
+						break;
 					}
 				}
-				rainCell.className = "align-right bright rain";
-				row.appendChild(rainCell);
+
+				if (this.config.decimalSymbol === "" || this.config.decimalSymbol === " ") {
+					this.config.decimalSymbol = ".";
+				}
+
+				var maxTempCell = document.createElement("td");
+				maxTempCell.innerHTML = forecast.maxTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
+				maxTempCell.className = "align-right bright max-temp";
+				row.appendChild(maxTempCell);
+
+				var minTempCell = document.createElement("tr");
+				minTempCell.innerHTML = forecast.minTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
+				minTempCell.className = "align-right min-temp";
+				row.appendChild(minTempCell);
+
+				if (this.config.showRainAmount) {
+					var rainCell = document.createElement("td");
+					if (isNaN(forecast.rain)) {
+						rainCell.innerHTML = "";
+					} else {
+						if(config.units !== "imperial") {
+							rainCell.innerHTML = parseFloat(forecast.rain).toFixed(1) + " mm";
+						} else {
+							rainCell.innerHTML = (parseFloat(forecast.rain) / 25.4).toFixed(2) + " in";
+						}
+					}
+					rainCell.className = "align-right bright rain";
+					row.appendChild(rainCell);
+				}
+
+				//if (this.config.fade && this.config.fadePoint < 1) {
+				//	if (this.config.fadePoint < 0) {
+				//		this.config.fadePoint = 0;
+				//	}
+				//	var startingPoint = this.forecast.length * this.config.fadePoint;
+				//	var steps = this.forecast.length - startingPoint;
+				//	if (f >= startingPoint) {
+				//		var currentStep = f - startingPoint;
+				//		row.style.opacity = 1 - (1 / steps * currentStep);
+				//	}
+			//	}
 			}
+				break;
+		case "vertical":
+			for (var f in this.forecast) {
+				var forecast = this.forecast[f];
 
-		//	if (this.config.fade && this.config.fadePoint < 1) {
-		//		if (this.config.fadePoint < 0) {
-		//			this.config.fadePoint = 0;
-		//		}
-		//		var startingPoint = this.forecast.length * this.config.fadePoint;
-		//		var steps = this.forecast.length - startingPoint;
-		//		if (f >= startingPoint) {
-		//			var currentStep = f - startingPoint;
-		//			row.style.opacity = 1 - (1 / steps * currentStep);
-		//		}
-		//	}
+				var row = document.createElement("tr");
+				if (this.config.colored) {
+					row.className = "colored";
+				}
+				table.appendChild(row);
+
+				var dayCell = document.createElement("td");
+				dayCell.className = "day";
+				dayCell.innerHTML = forecast.day;
+				row.appendChild(dayCell);
+
+				var iconCell = document.createElement("td");
+				iconCell.className = "bright weather-icon";
+				row.appendChild(iconCell);
+
+				var icon = document.createElement("span");
+				icon.className = "wi weathericon " + forecast.icon;
+				iconCell.appendChild(icon);
+
+				var degreeLabel = "&deg;";
+				if(this.config.scale) {
+					switch(this.config.units) {
+					case "metric":
+						degreeLabel += " C";
+						break;
+					case "imperial":
+						degreeLabel += " F";
+						break;
+					case "default":
+						degreeLabel = "K";
+						break;
+					}
+				}
+
+				if (this.config.decimalSymbol === "" || this.config.decimalSymbol === " ") {
+					this.config.decimalSymbol = ".";
+				}
+
+				var maxTempCell = document.createElement("td");
+				maxTempCell.innerHTML = forecast.maxTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
+				maxTempCell.className = "align-right bright max-temp";
+				row.appendChild(maxTempCell);
+
+				var minTempCell = document.createElement("td");
+				minTempCell.innerHTML = forecast.minTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
+				minTempCell.className = "align-right min-temp";
+				row.appendChild(minTempCell);
+
+				if (this.config.showRainAmount) {
+					var rainCell = document.createElement("td");
+					if (isNaN(forecast.rain)) {
+						rainCell.innerHTML = "";
+					} else {
+						if(config.units !== "imperial") {
+							rainCell.innerHTML = parseFloat(forecast.rain).toFixed(1) + " mm";
+						} else {
+							rainCell.innerHTML = (parseFloat(forecast.rain) / 25.4).toFixed(2) + " in";
+						}
+					}
+					rainCell.className = "align-right bright rain";
+					row.appendChild(rainCell);
+				}
+
+				//if (this.config.fade && this.config.fadePoint < 1) {
+				//	if (this.config.fadePoint < 0) {
+				//		this.config.fadePoint = 0;
+				//	}
+				//	var startingPoint = this.forecast.length * this.config.fadePoint;
+				//	var steps = this.forecast.length - startingPoint;
+				//	if (f >= startingPoint) {
+				//		var currentStep = f - startingPoint;
+				//		row.style.opacity = 1 - (1 / steps * currentStep);
+				//	}
+			//	}
+			}
+				break;
+		case "default":
+			for (var f in this.forecast) {
+				var forecast = this.forecast[f];
+
+				var row = document.createElement("td");
+				if (this.config.colored) {
+					row.className = "colored";
+				}
+				table.appendChild(row);
+
+				var dayCell = document.createElement("tr");
+				dayCell.className = "day";
+				dayCell.innerHTML = forecast.day;
+				row.appendChild(dayCell);
+
+				var iconCell = document.createElement("tr");
+				iconCell.className = "bright weather-icon";
+				row.appendChild(iconCell);
+
+				var icon = document.createElement("span");
+				icon.className = "wi weathericon " + forecast.icon;
+				iconCell.appendChild(icon);
+
+				var degreeLabel = "&deg;";
+				if(this.config.scale) {
+					switch(this.config.units) {
+					case "metric":
+						degreeLabel += " C";
+						break;
+					case "imperial":
+						degreeLabel += " F";
+						break;
+					case "default":
+						degreeLabel = "K";
+						break;
+					}
+				}
+
+				if (this.config.decimalSymbol === "" || this.config.decimalSymbol === " ") {
+					this.config.decimalSymbol = ".";
+				}
+
+				var maxTempCell = document.createElement("td");
+				maxTempCell.innerHTML = forecast.maxTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
+				maxTempCell.className = "align-right bright max-temp";
+				row.appendChild(maxTempCell);
+
+				var minTempCell = document.createElement("tr");
+				minTempCell.innerHTML = forecast.minTemp.replace(".", this.config.decimalSymbol) + degreeLabel;
+				minTempCell.className = "align-right min-temp";
+				row.appendChild(minTempCell);
+
+				if (this.config.showRainAmount) {
+					var rainCell = document.createElement("td");
+					if (isNaN(forecast.rain)) {
+						rainCell.innerHTML = "";
+					} else {
+						if(config.units !== "imperial") {
+							rainCell.innerHTML = parseFloat(forecast.rain).toFixed(1) + " mm";
+						} else {
+							rainCell.innerHTML = (parseFloat(forecast.rain) / 25.4).toFixed(2) + " in";
+						}
+					}
+					rainCell.className = "align-right bright rain";
+					row.appendChild(rainCell);
+				}
+
+				//if (this.config.fade && this.config.fadePoint < 1) {
+				//	if (this.config.fadePoint < 0) {
+				//		this.config.fadePoint = 0;
+				//	}
+				//	var startingPoint = this.forecast.length * this.config.fadePoint;
+				//	var steps = this.forecast.length - startingPoint;
+				//	if (f >= startingPoint) {
+				//		var currentStep = f - startingPoint;
+				//		row.style.opacity = 1 - (1 / steps * currentStep);
+				//	}
+			//	}
+			}
+				break;
 		}
-
 		return table;
 	},
 
@@ -332,8 +498,15 @@ Module.register("MMM-weatherforecast",{
 			var forecast = data.list[i];
 			this.parserDataWeather(forecast); // hack issue #1017
 
-			var day = moment(forecast.dt, "X").format("ddd");
-			var hour = moment(forecast.dt, "X").format("H");
+			var day;
+			var hour;
+			if(!!forecast.dt_txt) {
+				day = moment(forecast.dt_txt, "YYYY-MM-DD hh:mm:ss").format("ddd");
+				hour = moment(forecast.dt_txt, "YYYY-MM-DD hh:mm:ss").format("H");
+			} else {
+				day = moment(forecast.dt, "X").format("ddd");
+				hour = moment(forecast.dt, "X").format("H");
+			}
 
 			if (day !== lastDay) {
 				var forecastData = {
@@ -341,7 +514,7 @@ Module.register("MMM-weatherforecast",{
 					icon: this.config.iconTable[forecast.weather[0].icon],
 					maxTemp: this.roundValue(forecast.temp.max),
 					minTemp: this.roundValue(forecast.temp.min),
-					rain: this.roundValue(forecast.rain)
+					rain: forecast.rain
 				};
 
 				this.forecast.push(forecastData);
