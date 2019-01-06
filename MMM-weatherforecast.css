@@ -35,12 +35,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/26.png");
+	background-image : url("/css/icon/26.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-cloudy-windy:before {
-	content: url("../../css/icon/23.png");
+	content: url("/css/icon/23.png");
 }
 
 .weatherforecast .wi-cloudy-windy:before{
@@ -48,12 +48,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/23.png");
+	background-image : url("/css/icon/23.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-showers:before{
-	content: url("../../css/icon/9.png"):
+	content: url("/css/icon/9.png"):
 }
 
 .weatherforecast .wi-showers:before{
@@ -61,12 +61,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/9.png");
+	background-image : url("/css/icon/9.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-rain:before{
-	content: url("../../css/icon/12.png");
+	content: url("/css/icon/12.png");
 }
 
 .weatherforecast .wi-rain:before{
@@ -74,12 +74,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/12.png");
+	background-image : url("/css/icon/12.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-thunderstorm:before{
-	content: url("../../css/icon/3.png");
+	content: url("/css/icon/3.png");
 }
 
 .weatherforecast .wi-thunderstorm:before{
@@ -87,12 +87,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/3.png");
+	background-image : url("/css/icon/3.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-snow:before{
-	content: url("../../css/icon/14.png");
+	content: url("/css/icon/14.png");
 }
 
 .weatherforecast .wi-snow:before{
@@ -100,12 +100,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/14.png");
+	background-image : url("/css/icon/14.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-fog:before{
-	content: url("../../css/icon/22.png");
+	content: url("/css/icon/22.png");
 }
 
 .weatherforecast .wi-fog:before{
@@ -113,12 +113,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/22.png");
+	background-image : url("/css/icon/22.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-night-clear:before{
-	content: url("../../css/icon/31.png");
+	content: url("/css/icon/31.png");
 }
 
 .weatherforecast .wi-night-clear:before{
@@ -126,12 +126,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/31.png");
+	background-image : url("/css/icon/31.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-night-showers:before{
-	content: url("../../css/icon/45.png");
+	content: url("/css/icon/45.png");
 }
 
 .weatherforecast .wi-night-showers:before{
@@ -139,12 +139,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/45.png");
+	background-image : url("/css/icon/45.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-night-rain:before{
-	content: url("../../css/icon/45.png");
+	content: url("/css/icon/45.png");
 }
 
 .weatherforecast .wi-night-rain:before{
@@ -152,12 +152,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/45.png");
+	background-image : url("/css/icon/45.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-night-thunderstorm:before{
-	content: url("../../css/icon/47.png");
+	content: url("/css/icon/47.png");
 }
 
 .weatherforecast .wi-night-thunderstorm:before{
@@ -165,12 +165,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/47.png");
+	background-image : url("/css/icon/47.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-night-snow:before{
-	content: url("../../css/icon/46.png");
+	content: url("/css/icon/46.png");
 }
 
 .weatherforecast .wi-night-snow:before{
@@ -178,12 +178,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/46.png");
+	background-image : url("/css/icon/46.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-night-alt-cloudy-windy:before{
-	content: url("../../css/icon/24.png");
+	content: url("/css/icon/24.png");
 }
 
 .weatherforecast .wi-night-alt-cloudy-windy:before{
@@ -191,12 +191,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/24.png");
+	background-image : url("/css/icon/24.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-day-cloudy:before {
-	content: url("../../css/icon/28.png");
+	content: url("/css/icon/28.png");
 }
 
 .weatherforecast .wi-day-cloudy:before{
@@ -204,25 +204,25 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/28.png");
+	background-image : url("/css/icon/28.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-day-sunny:before {
-	content: url("../../css/icon/36.png");
+	content: url("/css/icon/36.png");
 }
 
 .weatherforecast .wi-day-sunny:before {
 	content: "";
 	height:60px;
-	width:87.5px;
+	width:87.5px;*/
 	display: block; 
-	background-image : url("../../css/icon/36.png");
-	background-size: 87.5px 60px;
+	background-image : url("/css/icon/36.png");
+	background-size: 87.5px 60px;*/
 }
 
 .wi-night-cloudy:before {
-	content: url("../../css/icon/27.png");
+	content: url("/css/icon/27.png");
 }
 
 .weatherforecast .wi-night-cloudy:before{
@@ -230,12 +230,12 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/27.png");
+	background-image : url("/css/icon/27.png");
 	background-size: 87.5px 60px;
 }
 
 .wi-night-rain:before {
-	content: url("../../css/icon/45.png");
+	content: url("/css/icon/45.png");
 }
 
 .weatherforecast .wi-night-rain:before{
@@ -243,7 +243,7 @@
 	height:60px;
 	width:87.5px;
 	display: block; 
-	background-image : url("../../css/icon/45.png");
+	background-image : url("/css/icon/45.png");
 	background-size: 87.5px 60px;
 }
 
