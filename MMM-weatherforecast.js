@@ -1,10 +1,9 @@
 /* global Module */
 
 /* Magic Mirror
- * Module: WeatherForecast
+ * Module: MMM-weatherforecast
  *
- * By Michael Teeuw http://michaelteeuw.nl
- * MIT Licensed.
+ * By Jason Hartgraves
  */
 
 Module.register("MMM-weatherforecast",{
