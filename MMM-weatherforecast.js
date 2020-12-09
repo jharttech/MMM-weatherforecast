@@ -501,10 +501,10 @@ Module.register("MMM-weatherforecast",{
 			var hour;
 			if(!!forecast.dt_txt) {
 				day = moment(forecast.dt_txt, "YYYY-MM-DD hh:mm:ss").format("ddd");
-				hour = moment(forecast.dt_txt, "YYYY-MM-DD hh:mm:ss").format("H");
+				hour = moment(forecast.dt_txt, "YYYY-MM-DD hh:mm:ss").toDate().getHours();
 			} else {
 				day = moment(forecast.dt, "X").format("ddd");
-				hour = moment(forecast.dt, "X").format("H");
+				hour = moment(forecast.dt, "X").toDate().getHours();
 			}
 
 			if (day !== lastDay) {
