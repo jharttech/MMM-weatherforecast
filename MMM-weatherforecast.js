@@ -508,6 +508,10 @@ Module.register("MMM-weatherforecast",{
 			}
 
 			if (day !== lastDay) {
+				// Stop processing when maxNumberOfDays is reached
+				if (this.forecast.length === this.config.maxNumberOfDays) {
+					break;
+				}
 				var forecastData = {
 					day: day,
 					icon: this.config.iconTable[forecast.weather[0].icon],
@@ -519,10 +523,6 @@ Module.register("MMM-weatherforecast",{
 				this.forecast.push(forecastData);
 				lastDay = day;
 
-				// Stop processing when maxNumberOfDays is reached
-				if (this.forecast.length === this.config.maxNumberOfDays) {
-					break;
-				}
 			} else {
 				//Log.log("Compare max: ", forecast.temp.max, parseFloat(forecastData.maxTemp));
 				forecastData.maxTemp = forecast.temp.max > parseFloat(forecastData.maxTemp) ? this.roundValue(forecast.temp.max) : forecastData.maxTemp;
